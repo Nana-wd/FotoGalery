@@ -4,12 +4,13 @@ header("Content-Type:text/html;charset=UTF-8");
 //подключаем файл конфигурации
 //include 'config.php';
 //include 'functions.php';
-include GALERY."galery.php";
+include "galery.php";
 include "index.tpl.php";//
 //require_once 'ContentManager.php';
-spl_autoload_register(function ($ContentManager) {
-    include $ContentManager. '.php';
-});
+// spl_autoload_register(function ($ContentManager) {
+//     include $ContentManager. '.php';
+// });
+use Fotogalery\ContentManager;
 
 
 //$host = 'localhost';    
