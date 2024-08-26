@@ -5,7 +5,7 @@ header("Content-Type:text/html;charset=UTF-8");
 //include 'config.php';
 //include 'functions.php';
 include "galery.php";
-include "index.tpl.php";//
+include "index.tpl.php"; //
 //require_once 'ContentManager.php';
 // spl_autoload_register(function ($ContentManager) {
 //     include $ContentManager. '.php';
@@ -14,10 +14,10 @@ use Fotogalery\ContentManager;
 
 
 //$host = 'localhost';    
-$host = '127.0.0.1'; 
-$user = ' root'; 
-$password = ''; 
-$database = 'fotoGalery'; 
+$host = '127.0.0.1';
+$user = ' root';
+$password = '';
+$database = 'fotoGalery';
 $db = new mysqli($host, $user, $password, $database);
 
 if ($db->connect_error) {
@@ -36,4 +36,3 @@ echo $html;
 
 
 // echo render('index',array('statti' => $statti,'cat'=>$cat,'galery'=>$galery));
-?>
