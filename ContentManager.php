@@ -1,13 +1,15 @@
 <?php
 
+namespace FotoGalery;
+
 class ContentManager {
     private $db;
 
-    public function __construct($db) {
+    public function __construct(object $db){
         $this->db = $db;
     }
 
-    public function getStatti($cat = false) {
+    public function getStatti(bool|string$cat = false):array{
         $sql = "SELECT id, title, date, img_src, discription, id_galery FROM statti";
         
         if ($cat) {
@@ -37,7 +39,7 @@ class ContentManager {
         return $row;
     }
 
-    public function getText($id) {
+    public function getText(int $id):array{
         $sql = "SELECT id, title, date, img_src, text FROM statti WHERE id = ?";
         
         $stmt = $this->db->prepare($sql);
@@ -59,7 +61,7 @@ class ContentManager {
         return $row;
     }
 
-    public function getCat() {
+    public function getCat():array {
         $sql = "SELECT id_category, name_category FROM category";
         
         $stmt = $this->db->prepare($sql);
@@ -80,7 +82,7 @@ class ContentManager {
         return $row;
     }
 
-    public function render($tmp, $vars) {
+    public function render(string $tmp, array $vars):string{
         if (file_exists('theme/' . $tmp . ".tpl.php")) {
             ob_start();
             extract($vars);
