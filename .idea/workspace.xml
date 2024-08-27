@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e4b2982-cd46-4463-9a17-858b272a12f3" name="Changes" comment="Add index.php" />
+    <list default="true" id="1e4b2982-cd46-4463-9a17-858b272a12f3" name="Changes" comment="Add index.php">
+      <change afterPath="$PROJECT_DIR$/AppConstance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataBaseConnect.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseConnect.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,10 +18,13 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="connector_to_data_base" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="connector_to_data_base" />
+        <entry key="$PROJECT_DIR$" value="developer" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,23 +50,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/nana/Desktop/photo_galery/project/FotoGalery",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;app__constance&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/nana/Desktop/photo_galery/project/FotoGalery&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mariadb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -77,6 +86,7 @@
       <updated>1724696265090</updated>
       <workItem from="1724696266275" duration="2411000" />
       <workItem from="1724698693182" duration="527000" />
+      <workItem from="1724699231725" duration="6480000" />
     </task>
     <task id="LOCAL-00001" summary="add Connect Class">
       <option name="closed" value="true" />
@@ -110,7 +120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724698811315</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add index.php">
+      <option name="closed" value="true" />
+      <created>1724699358225</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1724699358225</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,6 +138,7 @@
     <MESSAGE value="add Connect Class" />
     <MESSAGE value="Delete test file index1.php" />
     <MESSAGE value="Add index.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add index.php" />
+    <MESSAGE value="Add connect Constance in new Class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add connect Constance in new Class" />
   </component>
 </project>
