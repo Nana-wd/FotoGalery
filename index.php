@@ -5,32 +5,26 @@ header("Content-Type:text/html;charset=UTF-8");
 //подключаем файл конфигурации
 //include 'config.php';
 //include 'functions.php';
-include "galery.php";
-include "index.tpl.php";//
-//require_once 'ContentManager.php';
+//include "galery.php";
+//include "index.tpl.php";//
 // spl_autoload_register(function ($ContentManager) {
 //     include $ContentManager. '.php';
 // });
-use Fotogalery\ContentManager;
+require_once 'DataBaseConnect.php';
+require_once 'ContentManager.php';
 
+$connect = DataBaseConnect::connect();
 
-//$host = 'localhost';
-$host = '127.0.0.1';
-$user = ' root';
-$password = '';
-$database = 'fotoGalery';
-$db = new mysqli($host, $user, $password, $database);
+$contentManager = new ContentManager($connect);
 
-if ($db->connect_error) {
-    die('Ошибка подключения: ' . $db->connect_error);
-}
+$arr = $contentManager->getStatti();
+var_dump($arr);
 
-$contentManager = new ContentManager($db);
-$statti = $contentManager->getStatti();
-$categories = $contentManager->getCat();
-
-$html = $contentManager->render('template_name', ['key' => 'value']);
-echo $html;
+//$statti = $contentManager->getStatti();
+//$categories = $contentManager->getCat();
+//
+//$html = $contentManager->render('template_name', ['key' => 'value']);
+//echo $html;
 
 // $statti = getStatti(FALSE);
 // $cat = getCat();

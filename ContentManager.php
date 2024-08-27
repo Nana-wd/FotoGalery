@@ -1,42 +1,18 @@
 <?php
-
-namespace FotoGalery;
-
 class ContentManager {
-    private $db;
+    private PDO $db;
 
-    public function __construct(object $db){
+    public function __construct(PDO $db){
         $this->db = $db;
     }
 
-    public function getStatti(bool|string$cat = false):array{
-        $sql = "SELECT id, title, date, img_src, discription, id_galery FROM statti";
-        
-        if ($cat) {
-            $sql .= " WHERE cat = ?";
-        }
+    public function getStatti():array
+    {
+        $sql = "SELECT id, title, date, img_src, discription,id_galery FROM statti";
+        $smtp = $this->db->query($sql);
+        $arr = $smtp->fetchAll(PDO::FETCH_ASSOC);
+        return $arr;
 
-        $stmt = $this->db->prepare($sql);
-        
-        if ($cat) {
-            $stmt->bind_param('s', $cat);
-        }
-        
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        if ($stmt->error) {
-            exit($stmt->error);
-        }
-        
-        if ($result->num_rows === 0) {
-            exit('Статтей нет');
-        }
-        
-        $row = $result->fetch_all(MYSQLI_ASSOC);
-        $stmt->close();
-        
-        return $row;
     }
 
     public function getText(int $id):array{
@@ -46,18 +22,18 @@ class ContentManager {
         $stmt->bind_param('i', $id);
         $stmt->execute();
         $result = $stmt->get_result();
-        
+
         if ($stmt->error) {
             exit($stmt->error);
         }
-        
+
         if ($result->num_rows === 0) {
             exit('Статтей нет');
         }
-        
+
         $row = $result->fetch_array(MYSQLI_ASSOC);
         $stmt->close();
-        
+
         return $row;
     }
 
