@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
 
 <link  rel="stylesheet" href="css/style.css"/>
-<link  rel="stylesheet" href="<?php echo GALERY;?>theme/style.css"/>
+<link  rel="stylesheet" href="<?php echo ?>theme/style.css"/>
 
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="<?php echo GALERY;?>theme/js/script.js"></script>
