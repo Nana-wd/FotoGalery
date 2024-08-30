@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e4b2982-cd46-4463-9a17-858b272a12f3" name="Changes" comment="Add index.php">
-      <change afterPath="$PROJECT_DIR$/AppConstance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="1e4b2982-cd46-4463-9a17-858b272a12f3" name="Changes" comment="change methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ContentManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/ContentManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataBaseConnect.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseConnect.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galery.php" beforeDir="false" afterPath="$PROJECT_DIR$/galery.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.tpl.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +44,9 @@
   }
 }</component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -50,24 +55,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;app__constance&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/nana/Desktop/photo_galery/project/FotoGalery&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "fix__methods",
+    "last_opened_file_path": "/home/nana/Desktop/photo_galery/project/FotoGalery",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mariadb&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mariadb"
     ]
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -139,6 +144,7 @@
     <MESSAGE value="Delete test file index1.php" />
     <MESSAGE value="Add index.php" />
     <MESSAGE value="Add connect Constance in new Class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add connect Constance in new Class" />
+    <MESSAGE value="change methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="change methods" />
   </component>
 </project>

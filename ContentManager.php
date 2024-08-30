@@ -1,261 +1,94 @@
 <?php
 
-namespace FotoGalery;
+//namespace FotoGalery;
 
-class ContentManager {
+class ContentManager
+{
     private $db;
 
-    public function __construct(object $db){
+    /**
+     * Initializes the class with a database connection.
+     */
+    public function __construct(object $db)
+    {
         $this->db = $db;
     }
+    /**
+     * Retrieves a list of articles from the database.
+     *
+     * @return array An array of associative arrays containing article data.
+     */
+    public function getStatti(): array
+    {
+        $sql = "SELECT id, title, date, img_src, discription,id_galery FROM statti";
+        $smtp = $this->db->query($sql);
+        $arr = $smtp->fetchAll(PDO::FETCH_ASSOC);
+        return $arr;
+    }
+    /**
+     * Retrieves a specific article by its ID.
+     * @param int $id The ID of the article to retrieve.
+     * @return array An associative array containing the article data.
+     * @throws Exception If no article is found, it exits with 'Статтей нет'.
+     */
+    public function getText(int $id): array
+    {
+        $stmt = $this->db->prepare("SELECT id, title, date, img_src, text FROM statti WHERE id = :id");
 
-    public function getStatti(bool|string$cat = false):array{
-        $sql = "SELECT id, title, date, img_src, discription, id_galery FROM statti";
-        
-        if ($cat) {
-            $sql .= " WHERE cat = ?";
-        }
+        $stmt->execute([':id' => $id]);
+        $arr = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $stmt = $this->db->prepare($sql);
-        
-        if ($cat) {
-            $stmt->bind_param('s', $cat);
-        }
-        
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        if ($stmt->error) {
-            exit($stmt->error);
-        }
-        
-        if ($result->num_rows === 0) {
-            exit('Статтей нет');
-        }
-        
-        $row = $result->fetch_all(MYSQLI_ASSOC);
-        $stmt->close();
-        
-        return $row;
+        return $arr ?: exit('Статтей нет');
     }
 
-    public function getText(int $id):array{
-        $sql = "SELECT id, title, date, img_src, text FROM statti WHERE id = ?";
-        
-        $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('i', $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        if ($stmt->error) {
-            exit($stmt->error);
-        }
-        
-        if ($result->num_rows === 0) {
-            exit('Статтей нет');
-        }
-        
-        $row = $result->fetch_array(MYSQLI_ASSOC);
-        $stmt->close();
-        
-        return $row;
-    }
 
-    public function getCat():array {
-        $sql = "SELECT id_category, name_category FROM category";
-        
-        $stmt = $this->db->prepare($sql);
+    /**
+     * Retrieves a list of categories from the database.
+     *
+     * This method prepares and executes a SQL query to fetch all categories
+     * from the category table. It returns an array of categories. If no categories are found,
+     * it exits with a message.
+     */
+    public function getCat(): array
+    {
+        $stmt = $this->db->prepare("SELECT id_category, name_category FROM category");
         $stmt->execute();
-        $result = $stmt->get_result();
-        
-        if ($stmt->error) {
-            exit($stmt->error);
-        }
-        
-        if ($result->num_rows === 0) {
-            exit('Категорий нет');
-        }
-        
-        $row = $result->fetch_all(MYSQLI_ASSOC);
-        $stmt->close();
-        
-        return $row;
-    }
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    public function render(string $tmp, array $vars):string{
-        if (file_exists('theme/' . $tmp . ".tpl.php")) {
+        return $rows ?: exit('Категорий нет');
+    }
+    /**
+     * Renders a template file with the provided variables.
+     *
+     * This method checks if the specified template file exists. If it does,
+     * it extracts the variables from the provided array and includes the
+     * template file. The output of the template is captured and returned as
+     * a string. If the template file does not exist, it returns an empty string
+     * or could throw an exception based on how you choose to handle this case.
+     *
+     * @param array $vars An associative array of variables to pass to the template.
+     * @return string The rendered template as a string.
+     *
+     * @throws Exception If the template file is not found and exception handling
+     *                    is preferred over returning an empty string.
+     */
+    public function render(array $vars): string
+    {
+        $path = "index.tpl.php";
+
+        if (file_exists($path)) {
             ob_start();
             extract($vars);
-            require 'theme/' . $tmp . ".tpl.php";
+            require $path;
             return ob_get_clean();
         }
+        return '';
     }
+
 }
 
 
 
-// function getStatti($cat = false) {
-//     global $db;
-    
-//     $sql = "SELECT id, title, date, img_src, discription, id_galery FROM statti";
-    
-//     if ($cat) {
-//         $sql .= " WHERE cat = ?";
-//     }
-    
-//     $stmt = $db->prepare($sql);
-    
-//     if ($cat) {
-//         $stmt->bind_param('s', $cat);
-//     }
-    
-//     $stmt->execute();
-    
-//     $result = $stmt->get_result();
-    
-//     if ($stmt->error) {
-//         exit($stmt->error);
-//     }
-    
-//     if ($result->num_rows === 0) {
-//         exit('Статтей нет');
-//     }
-    
-//     $row = $result->fetch_all(MYSQLI_ASSOC);
-    
-//     $stmt->close();
-    
-//     return $row;
-// }
-
-
-// function getText($id) {
-//     global $db;
-    
-//     $sql = "SELECT id, title, date, img_src, text FROM statti WHERE id = ?";
-    
-//     $stmt = $db->prepare($sql);
-    
-//     $stmt->bind_param('i', $id);
-    
-//     $stmt->execute();
-    
-//     $result = $stmt->get_result();
-    
-//     if ($stmt->error) {
-//         exit($stmt->error);
-//     }
-    
-//     if ($result->num_rows === 0) {
-//         exit('Статтей нет');
-//     }
-    
-//     $row = $result->fetch_array(MYSQLI_ASSOC);
-    
-//     $stmt->close();
-    
-//     return $row;
-// }
 
 
 
-// function getCat() {
-//     global $db;
-    
-//     $sql = "SELECT id_category, name_category FROM category";
-    
-//     $stmt = $db->prepare($sql);
-    
-//     $stmt->execute();
-    
-//     $result = $stmt->get_result();
-    
-//     if ($stmt->error) {
-//         exit($stmt->error);
-//     }
-    
-//     if ($result->num_rows === 0) {
-//         exit('Статтей нет');
-//     }
-    
-//     $row = $result->fetch_all(MYSQLI_ASSOC);
-    
-//     $stmt->close();
-    
-//     return $row;
-// }
-
-
-
-// function render($tmp,$vars) {
-//     if(file_exists('theme/'.$tmp.".tpl.php")) {
-//         ob_start();
-//         extract($vars);
-//         require 'theme/'.$tmp.".tpl.php";
-//         return ob_get_clean();
-//     }
-// }
-
-
-	// function get_statti($cat=FALSE) {
-	// 	global $db;
-	// 	$sql = "SELECT id,title,date,img_src,discription,id_galery
-	// 										FROM statti";
-		
-	// 	if($cat) {
-	// 		$sql .= " WHERE cat = '$cat'";
-	// 	}
-	// 	$result = mysqli_query($db,$sql);
-	// 	if (!$result){
-	// 		exit(mysqli_error($db));
-	// 	}
-	// 	if(mysqli_num_rows($result) == 0) {
-	// 		exit('Статтей нет');
-	// 	}
-	// 	$row = array();
-	// 	for($i = 0; $i < mysqli_num_rows($result); $i++) {
-	// 		$row[] = mysqli_fetch_array($result,MYSQLI_ASSOC);
-	// 	}			
-	// 	return $row;
-	// }
-	
-	// function get_text($id) {
-		
-	// 	global $db;
-		
-	// 	$sql = "SELECT id,title,date,img_src,text
-	// 										FROM statti WHERE id='$id'";
-	// 	$result = mysqli_query($db,$sql);									
-		
-	// 	if (!$result){
-	// 		exit(mysqli_error($db));
-	// 	}
-	// 	if(mysqli_num_rows($result) == 0) {
-	// 		exit('Статтей нет');
-	// 	}
-	// 	$row = array();
-	// 	for($i = 0; $i < mysqli_num_rows($result); $i++) {
-	// 		$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-	// 	}				
-	// 	return $row;
-	// }
-	
-	// function get_cat() {
-		
-	// 	global $db;
-	// 	$result = mysqli_query($db,"SELECT id_category,name_category
-	// 										FROM category");
-	// 	if (!$result){
-	// 		exit(mysqli_error($db));
-	// 	}
-	// 	if(mysqli_num_rows($result) == 0) {
-	// 		exit('Статтей нет');
-	// 	}
-	// 	$row = array();
-	// 	for($i = 0; $i < mysqli_num_rows($result); $i++) {
-	// 		$row[] = mysqli_fetch_array($result,MYSQLI_ASSOC);
-	// 	}				
-	// 	return $row;
-	// }
-	
-	
